@@ -97,16 +97,22 @@
 # m = "デイトラ".match(/デイトラ/)
 # puts m
 
-require 'uri'
-require 'net/http'
-require 'json'
+# require 'uri'
+# require 'net/http'
+# require 'json'
 
-url = "https://qiita.com/api/v2/items?query=Ruby"
+# url = "https://qiita.com/api/v2/items?query=Ruby"
 
-uri = URI.parse(url)
-res = Net::HTTP.get(uri)
-res = JSON.parse(res)
+# uri = URI.parse(url)
+# res = Net::HTTP.get(uri)
+# res = JSON.parse(res)
 
-res.each do |item|
-  puts "#{item["title"]} by #{item["user"]["name"]}"
-end
+# res.each do |item|
+#   puts "#{item["title"]} by #{item["user"]["name"]}"
+# end
+
+require_relative './qiita'
+
+qiita = Qiita.new('Ruby')
+articles = qiita.search()
+puts articles
