@@ -111,8 +111,112 @@
 #   puts "#{item["title"]} by #{item["user"]["name"]}"
 # end
 
-require_relative './qiita'
+# require_relative './qiita'
 
-qiita = Qiita.new('Ruby')
-articles = qiita.search()
-puts articles
+# qiita = Qiita.new('Ruby')
+# articles = qiita.search()
+# puts articles
+
+numbers = [1, 2, 3, 5]
+
+# 出力値
+# 11
+puts numbers.sum
+
+numbers = [8, 2, 2]
+
+# 出力値
+# 32
+puts numbers.inject(:*)
+
+
+numbers = [8, 2, 5, 20]
+# 出力値
+# 1600
+
+  total = 1
+numbers.each do |number|
+  total = total * number
+end
+
+puts total
+
+scores = [
+  [10, 11, 22],
+  [29, 11, 3, 1]
+]
+
+# 出力値
+# 14
+# 11
+scores.each do |score_list|
+  total = 0
+  score_list.each do |score|
+    total += score
+  end
+  average = total / score_list.length
+  puts average
+end
+
+def max_and_min(array)
+  return array.max, array.min
+end
+puts max_and_min([1, 2, 345, 346, 299]).inspect
+
+# 出力値
+# [346, 1]
+
+def compare_str(str)
+  if str[0] == str[1]
+    puts "TRUE"
+  else
+    puts "FALSE"
+  end
+end
+
+str = ['aaa', 'bbb']
+compare_str(str) # 出力値 FALSE
+
+str = ['aaa', 'aaa']
+compare_str(str) # 出力値 TRUE
+
+def question_str(str)
+  if str.include?("?")
+    puts "疑問文"
+  end
+end
+
+str = 'こんにちは'
+question_str(str)
+puts "----------"
+str = 'こんにちは?'
+question_str(str)
+# 出力値
+# ----------
+# 疑問文
+
+
+def puts_email(str)
+  if str.match(/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i)
+    puts str
+  else
+    puts 'メールアドレスではありません'
+  end
+end
+  
+str = 'aaa@gmail.com'
+puts_email(str) # 出力される
+str = 'aaagmail.com'
+puts_email(str) # 出力されない
+
+names = [
+  { first_name: 'taro', family_name: 'sato' },
+  { first_name: 'rika', family_name: 'yamada' }
+]
+# 出力値 sato taro, yamada rika
+
+full_names = names.map do |name|
+ "#{name[:family_name]} #{name[:first_name]}"
+end
+
+puts full_names.join(",")
